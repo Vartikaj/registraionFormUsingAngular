@@ -15,9 +15,20 @@ export class RegistrationServiceService {
     return this.httpClient.get(this.url + "getAdminRoute");
   }
 
+  getDataById(id: String){
+    return this.httpClient.get(this.url + "getDataById?id=" + id);
+  }
+
   savedata(data : any){
     this.httpClient.post(this.url + "postRegistrationData", data).subscribe(checkData => {
       console.log("data Entered Successfully" + checkData);
     });
   }
+
+  updateDataById(id: String, data: any){
+    console.log(data);
+    return this.httpClient.put(this.url + "updateDataById?id=" + id, data);
+  }
+
+
 }
