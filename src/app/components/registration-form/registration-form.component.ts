@@ -108,10 +108,13 @@ export class RegistrationFormComponent implements OnInit {
             this.posts.data[0] = response; 
           });
         }
+      } else {
+        this.saveData.savedata(this.contactForm.value).subscribe((checkout) =>
+        { 
+          console.log(checkout);
+        });
       }
     })
-
-    this.saveData.savedata(this.contactForm.value);
   }
 
   deletePotsts(dataSets: any){
