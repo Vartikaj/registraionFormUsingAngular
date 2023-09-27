@@ -20,14 +20,16 @@ export class RegistrationServiceService {
   }
 
   savedata(data : any){
-    this.httpClient.post(this.url + "postRegistrationData", data).subscribe(checkData => {
-      console.log("data Entered Successfully" + checkData);
-    });
+    return this.httpClient.post(this.url + "postRegistrationData", data);
   }
 
   updateDataById(id: String, data: any){
     console.log(data);
     return this.httpClient.put(this.url + "updateDataById?id=" + id, data);
+  }
+
+  deleteDataById(id: String){
+    return this.httpClient.delete(this.url + "deleteDataById?id=" + id);
   }
 
 

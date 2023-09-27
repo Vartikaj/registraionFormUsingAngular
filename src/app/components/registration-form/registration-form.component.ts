@@ -81,6 +81,8 @@ export class RegistrationFormComponent implements OnInit {
 
 
 
+
+
     //
     // this.contactForm.get(['firstName'])?.setValue('vbbb')
 
@@ -97,20 +99,24 @@ export class RegistrationFormComponent implements OnInit {
    */
   submitDetails() {
     this.submitted = true;
-    console.log(this.contactForm.value);
     this.route.queryParamMap.subscribe(queryParams => {
       if(queryParams.has('id')) {
         const id = queryParams.get('id');
         if(id){
-          this.saveData.updateDataById(id, this.posts.data[0]).subscribe((response) =>
-            { 
-              this.posts = response; 
-            }
-          );
-        }else{
-          this.saveData.savedata(this.contactForm.value);
+          this.saveData.updateDataById(id, this.contactForm.value).subscribe((response) =>
+          { 
+            this.posts.data[0] = response; 
+          });
         }
       }
+    })
+
+    this.saveData.savedata(this.contactForm.value);
+  }
+
+  deletePotsts(dataSets: any){
+    this.saveData.deleteDataById(dataSets.id).subscribe((response) => {
+      console.log(dataSets.id);
     })
   }
 }
