@@ -78,12 +78,7 @@ export class RegistrationFormComponent implements OnInit {
     this.saveData.getPosts().subscribe((response) =>
       { this.posts = response; },
     )
-
-
-
-
-
-    //
+    
     // this.contactForm.get(['firstName'])?.setValue('vbbb')
 
   }
